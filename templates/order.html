@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ваш заказ — Облик</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="header"><div class="wrap"><a class="logo" href="/">Облик</a></div></header>
+<main class="wrap">
+  <div class="panel status-card" id="card"><div class="spin"></div><p class="muted">Проверяем оплату…</p></div>
+</main>
+<script>
+const id = location.pathname.split('/').pop();
+const card = document.getElementById('card');
+let tries = 0;
+const VIEWS = { front: 'Спереди', right: 'Сбоку', back: 'Сзади', left: 'Сбоку' };
+
+function render(o) {
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const views = o.groups.map((g) =>
+    (g.label ? `<h3 class="sub">${esc(g.label)}</h3>` : '') +
+    `<div class="views">${g.views.map((u, i) => `<figure><img src="${u}" alt=""><figcaption>${Object.values(VIEWS)[i]}</figcaption></figure>`).join('')}</div>`).join('');
+  const details = `<p class="muted">Заказ №${o.id.slice(0, 8)} · ${o.style}, ${o.composition}, ${o.size} · ${o.price.toLocaleString('ru-RU')} ₽ + доставка ${o.shipping.toLocaleString('ru-RU')} ₽ = ${o.total.toLocaleString('ru-RU')} ₽</p><div style="margin-top:20px;text-align:left">${views}</div>`;
+  if (o.status === 'paid') {
+    card.innerHTML = `<div class="status-ico">🎉</div><h1 style="font-size:2rem">Оплата прошла, спасибо!</h1><p>Мы приняли заказ, и наши мастера приступают к воплощению вашей статуэтки. Подтверждение и чек придут на email.</p>${details}<p style="margin-top:24px"><a class="btn" href="/">На главную</a></p>`;
+  } else if (o.status === 'canceled') {
+    card.innerHTML = `<div class="status-ico">😕</div><h1 style="font-size:2rem">Оплата не прошла</h1><p class="muted">Платёж был отменён. Деньги не списаны. Вы можете попробовать ещё раз.</p><p><a class="btn" href="/create">Создать заново</a></p>`;
+  } else {
+    card.innerHTML = `<div class="spin"></div><h2 style="font-size:1.5rem">Ожидаем подтверждение оплаты…</h2><p class="muted">Если вы уже оплатили, это займёт несколько секунд. Страница обновится сама.</p>`;
+  }
+}
+
+async function poll() {
+  try {
+    const r = await fetch('/api/orders/' + id);
+    if (!r.ok) throw new Error();
+    const o = await r.json();
+    render(o);
+    if (o.status === 'pending_payment' && ++tries < 60) setTimeout(poll, 3000);
+  } catch (e) {
+    card.innerHTML = '<h1 style="font-size:2rem">Заказ не найден</h1><p><a class="btn" href="/">На главную</a></p>';
+  }
+}
+poll();
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Облик — твоя история в объёме</title>
+<meta name="description" content="Фигурки и скульптуры по вашей фотографии. Загрузите снимок, посмотрите макет со всех сторон — и подарите историю, которую можно взять в руки.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="/">Облик</a>
+    <a class="btn sm head-cta" href="/create">Создать</a>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="#products">Скульптуры</a>
+      <a href="#how">Как это работает</a>
+      <a href="#ideas">Идеи для подарка</a>
+      <a href="#styles">Примеры</a>
+      <a class="btn sm" href="/create">Создать свой Облик</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Твоя история.<br>В объёме.</h1>
+      <p class="lead">Фигурки и скульптуры по твоей фотографии. Сохраните близких такими, какими любите.</p>
+      <div class="pills"><span class="pill">Скульптура</span><span class="pill">Миниатюра</span><span class="pill">Пара</span><span class="pill">Семья</span></div>
+      <div class="cta">
+        <a class="btn big" href="/create">Создать свой Облик <span aria-hidden="true">→</span></a>
+        <a class="link-arrow" href="#styles">Посмотреть примеры →</a>
+      </div>
+    </div>
+    <div class="hero-art"><img src="/static/img/design/hero.webp" fetchpriority="high" alt="Скульптура пары на подставке «Облик»"></div>
+  </div>
+  <div class="tagline caps">Люди &nbsp;•&nbsp; Мгновения &nbsp;•&nbsp; В объёме</div>
+</section>
+
+<section id="how" style="padding-top:56px">
+  <div class="wrap">
+    <div class="section-head left"><h2>Как это работает</h2></div>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><div><h3>Фото</h3><p>Загрузите свою фотографию — лучше, чтобы лица были хорошо видны.</p><img src="/static/img/design/step1.jpg" alt=""></div></div>
+      <div class="step"><span class="num">02</span><div><h3>Образ</h3><p>Выберите состав и характер исполнения — мы покажем макет скульптуры со всех сторон.</p><img src="/static/img/design/step2.jpg" alt=""></div></div>
+      <div class="step"><span class="num">03</span><div><h3>Фигурка</h3><p>Оплатите — наши мастера воплотят её и отправят вам готовую скульптуру.</p><img src="/static/img/design/step3.jpg" alt=""></div></div>
+    </div>
+    <p class="muted" style="margin-top:34px">Макет вы видите до оплаты. Если он не нравится — создайте его заново или выберите другой стиль.</p>
+  </div>
+</section>
+
+<section id="products" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Выберите состав</h2>
+      <p>Цена зависит от того, сколько людей будет на скульптуре. Высота — 10–15 см.</p>
+    </div>
+    <div class="compo">
+      <div class="ccard"><img loading="lazy" src="/static/img/design/idea-portrait.webp" alt="Личный портрет"><div class="body"><h3>Личный портрет</h3><p>Один человек: подарок себе, юбиляру или память о вашем ребёнке.</p><div class="from">1 человек</div><div class="cost" data-people="1" data-elements="0">—</div><a class="btn sm" href="/create?people=1">Создать</a></div></div>
+      <div class="ccard"><img loading="lazy" src="/static/img/design/idea-couple.webp" alt="Для двоих"><div class="body"><h3>Для двоих</h3><p>Пара, друзья, мама с дочкой — ваш общий момент в объёме.</p><div class="from">2 человека</div><div class="cost" data-people="2" data-elements="0">—</div><a class="btn sm" href="/create?people=2">Создать</a></div></div>
+      <div class="ccard"><img loading="lazy" src="/static/img/design/idea-growth.webp" alt="Этапы взросления"><div class="body"><h3>Этапы взросления</h3><p>Набор из 3 фигурок: ваш ребёнок в разном возрасте, от малыша до школьника.</p><div class="from">3 фигурки</div><div class="cost js-growth">—</div><a class="btn sm" href="/create?product=growth">Создать</a></div></div>
+    </div>
+    <p class="muted center" style="text-align:center;margin:18px 0 0;font-size:.92rem">Доставка не входит в стоимость и оплачивается отдельно — её цену вы увидите при оформлении заказа.</p>
+  </div>
+</section>
+
+<section id="ideas">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Идеи для подарка</h2>
+      <p>Не знаете, что подарить? Вот истории, которые чаще всего хочется сохранить. Нажмите на идею — мы сразу выберем подходящий состав.</p>
+    </div>
+    <div class="ideas">
+      <a class="idea" href="/create?people=2&idea=anniversary"><img loading="lazy" src="/static/img/design/idea-couple.webp" alt=""><div class="body"><h3>Для двоих</h3><p>Годовщина, свадьба, 14 февраля — момент, который хочется оставить навсегда.</p><div class="row"><span>2 человека</span><b data-people="2" data-elements="0">—</b></div></div></a>
+      <a class="idea" href="/create?people=2&idea=parents"><img loading="lazy" src="/static/img/design/idea-parents.webp" alt=""><div class="body"><h3>Подарок родителям</h3><p>Мама и папа к юбилею или годовщине: тёплый подарок, который не заменит ни один сертификат.</p><div class="row"><span>2 человека</span><b data-people="2" data-elements="0">—</b></div></div></a>
+      <a class="idea" href="/create?product=growth"><img loading="lazy" src="/static/img/design/idea-growth.webp" alt=""><div class="body"><h3>Этапы взросления</h3><p>Три фигурки одного ребёнка в разном возрасте — подарок бабушкам и дедушкам или память для самих родителей.</p><div class="row"><span>3 фигурки</span><b class="js-growth">—</b></div></div></a>
+      <a class="idea" href="/create?people=4&idea=thennow"><img loading="lazy" src="/static/img/design/idea-then-now.webp" alt=""><div class="body"><h3>Тогда и сейчас</h3><p>Два поколения рядом: бабушки и дедушки с детьми и внуками на одной скульптуре.</p><div class="row"><span>4 человека</span><b data-people="4" data-elements="0">—</b></div></div></a>
+      <a class="idea" href="/create?people=1&idea=portrait"><img loading="lazy" src="/static/img/design/idea-portrait.webp" alt=""><div class="body"><h3>Личный портрет</h3><p>Выпускной, день рождения или память о человеке, который важен именно вам.</p><div class="row"><span>1 человек</span><b data-people="1" data-elements="0">—</b></div></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="txt">
+      <h2>То, что однажды покажут внукам.</h2>
+      <p>Начните с вашей пары. Соберите близких в одной композиции. Сохраняйте моменты, к которым хочется возвращаться.</p>
+      <a class="btn" href="/create">Создать свой Облик →</a>
+    </div>
+    <img loading="lazy" src="/static/img/design/family-banner.webp" alt="Семейная скульптура">
+  </div>
+</section>
+
+<section id="present" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Как подарить так, чтобы запомнилось</h2>
+      <p>Скульптура — уже сильный подарок. Вот несколько идей, как сделать вручение особенным.</p>
+    </div>
+    <div class="present">
+      <div class="tip"><div class="num">01</div><h3>Сюрприз-история</h3><p>Расскажите, какой снимок лёг в основу: где он сделан и почему вы выбрали именно его. Подарок станет частью воспоминания.</p></div>
+      <div class="tip"><div class="num">02</div><h3>Письмо к подарку</h3><p>Приложите короткое письмо от руки: за что вы благодарны человеку или что хотите ему пожелать.</p></div>
+      <div class="tip"><div class="num">03</div><h3>Вручите в особенный момент</h3><p>За семейным ужином, в день годовщины или на рассвете — момент важен не меньше самого подарка.</p></div>
+      <div class="tip"><div class="num">04</div><h3>Подарите вместе</h3><p>Если на скульптуре вся семья, пусть дарят все сразу — братья, сёстры и дети от общего имени.</p></div>
+    </div>
+    <div class="occasions">
+      <span>Годовщина</span><span>Свадьба</span><span>День рождения</span><span>Юбилей родителей</span><span>14 февраля</span><span>Рождение ребёнка</span><span>Выпускной</span><span>Новоселье</span><span>Новый год</span><span>Просто так</span>
+    </div>
+  </div>
+</section>
+
+<section id="styles">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Выберите характер исполнения</h2>
+      <p>Один и тот же снимок можно воплотить в мраморе, бронзе, дереве или гранях. Примеры стилей:</p>
+    </div>
+    <div class="gallery">
+      <div class="gcard"><img loading="lazy" src="/static/img/styles/marble.jpg" alt="Античный мрамор"><div>Античный мрамор<small>Бюст с мягкими складками ткани</small></div></div>
+      <div class="gcard"><img loading="lazy" src="/static/img/styles/bronze.jpg" alt="Бронза"><div>Бронза<small>Тёплый металл, уютная сцена</small></div></div>
+      <div class="gcard"><img loading="lazy" src="/static/img/styles/wood.jpg" alt="Резьба по дереву"><div>Резьба по дереву<small>Фактура резьбы</small></div></div>
+      <div class="gcard"><img loading="lazy" src="/static/img/styles/folk.jpg" alt="Народный орнамент"><div>Народный орнамент<small>Традиционные узоры и плащ</small></div></div>
+      <div class="gcard"><img loading="lazy" src="/static/img/styles/relief.jpg" alt="Барельеф-медальон"><div>Барельеф-медальон<small>Портрет в овальной раме</small></div></div>
+      <div class="gcard"><img loading="lazy" src="/static/img/styles/lowpoly.jpg" alt="Лоу-поли"><div>Лоу-поли<small>Современные грани</small></div></div>
+      <div class="gcard"><img loading="lazy" src="/static/img/styles/artdeco.jpg" alt="Арт-деко"><div>Арт-деко<small>Элегантные линии, тёмный металл</small></div></div>
+      <div class="gcard cta-card"><div><h3>Ваша очередь</h3><p>Попробуйте со своим фото</p><a class="btn sm" href="/create">Создать</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="section-head"><h2>Частые вопросы</h2></div>
+    <div class="faq">
+      <details><summary>Сколько это стоит?</summary><p>Скульптура одного человека — <span class="js-p1">5 990 ₽</span>, двух — <span class="js-p2">9 990 ₽</span>. Каждый следующий человек — <span class="js-step">+5 000 ₽</span>; набор «Этапы взросления» (3 фигурки) — <span class="js-growth">19 990 ₽</span>. Доставка не включена и оплачивается отдельно.</p></details>
+      <details><summary>Какое фото лучше загрузить?</summary><p>Чёткое, хорошо освещённое, где лица видны целиком и не закрыты. Подойдёт портрет одного человека, пары или группы. Если людей несколько, лучше, чтобы все были на одном снимке.</p></details>
+      <details><summary>Что, если макет не понравился?</summary><p>Вы можете создать его заново или выбрать другой стиль — до оплаты это ни к чему вас не обязывает.</p></details>
+      <details><summary>Какие сроки?</summary><p>Изготовление занимает 5–7 рабочих дней после успешной оплаты, затем скульптура едет к вам службой доставки — срок доставки вы увидите при оформлении заказа.</p></details>
+      <details><summary>Какого размера будет скульптура?</summary><p>Сейчас доступна высота 10–15 см. Другие размеры мы добавим позже.</p></details>
+      <details><summary>Как происходит оплата?</summary><p>Онлайн через ЮKassa: банковской картой, СБП и другими способами, которые доступны на странице оплаты.</p></details>
+      <details><summary>Что вы делаете с моим фото?</summary><p>Фото используется только для создания вашей скульптуры и выполнения заказа.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Ваша история уже есть.<br>Осталось дать ей форму.</h2>
+    <p class="muted">Загрузите фото и посмотрите макет — это бесплатно.</p>
+    <a class="btn big" href="/create">Создать свой Облик →</a>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div><b class="logo" style="font-size:1.3rem">Облик</b> &nbsp; <span class="caps">Люди • Мгновения • В объёме</span><br><span style="font-size:.85rem">ИП Шадура Кристина Игоревна · ИНН 772831712981</span></div>
+    <div><a href="/offer">Оферта</a> · <a href="/privacy">Политика конфиденциальности</a> · <a href="/legal">Реквизиты</a></div>
+  </div>
+</footer>
+
+<script src="/static/js/nav.js"></script>
+<script>
+const rub = (n) => n.toLocaleString('ru-RU') + ' ₽';
+fetch('/api/config').then(r => r.json()).then(c => {
+  const price = (people, elements) =>
+    (people === 1 ? c.price1 : c.price2 + (people - 2) * c.step) + elements * c.step;
+  document.querySelectorAll('[data-people]').forEach(el => {
+    const p = price(+el.dataset.people, +el.dataset.elements);
+    el.textContent = (el.classList.contains('cost') && +el.dataset.people >= 3 ? 'от ' : '') + rub(p);
+  });
+  document.querySelectorAll('.js-step').forEach(el => el.textContent = el.textContent.startsWith('+') ? '+' + rub(c.step) : rub(c.step));
+  document.querySelectorAll('.js-growth').forEach(el => el.textContent = rub(c.priceGrowth));
+  document.querySelectorAll('.js-p1').forEach(el => el.textContent = rub(c.price1));
+  document.querySelectorAll('.js-p2').forEach(el => el.textContent = rub(c.price2));
+}).catch(() => {});
+</script>
+</body>
+</html>

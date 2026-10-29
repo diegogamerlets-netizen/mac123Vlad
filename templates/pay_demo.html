@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Демо-оплата — Облик</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <div class="panel status-card">
+    <div class="status-ico">🧪</div>
+    <h1 style="font-size:1.8rem">Демо-оплата</h1>
+    <p class="muted">Ключи ЮKassa не заданы, поэтому вместо настоящей оплаты показана эта страница. Деньги не списываются. После подключения ключей здесь будет страница ЮKassa.</p>
+    <p><button class="btn big" id="ok">Имитировать успешную оплату</button></p>
+  </div>
+</main>
+<script>
+const id = location.pathname.split('/').pop();
+document.getElementById('ok').onclick = async () => {
+  await fetch('/api/pay-demo/' + id, { method: 'POST' });
+  location.href = '/order/' + id;
+};
+</script>
+</body>
+</html>

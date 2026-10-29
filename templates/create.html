@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Создать свой Облик</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="/">Облик</a>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="/#products">Скульптуры</a>
+      <a href="/#how">Как это работает</a>
+      <a href="/#ideas">Идеи для подарка</a>
+      <a href="/#styles">Примеры</a>
+      <a href="/legal">Условия</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-title">
+    <h1 style="font-size:clamp(1.9rem,6vw,2.8rem)">Создайте свой Облик</h1>
+    <p class="muted">Загрузите фото, выберите стиль — и посмотрите макет со всех сторон. Платить нужно только если он понравился.</p>
+  </div>
+
+  <div class="create">
+    <!-- 1. продукт -->
+    <div class="panel" id="p0">
+      <h2><b>1</b> Что создаём?</h2>
+      <div class="product-pick">
+        <label><input type="radio" name="product" value="sculpture" checked><span><strong>Скульптура</strong><small id="prodSculpt">1–6 человек</small></span></label>
+        <label><input type="radio" name="product" value="growth"><span><strong>Этапы взросления</strong><small id="prodGrowth">3 фигурки одного ребёнка в разном возрасте</small></span></label>
+      </div>
+    </div>
+
+    <!-- 2. фото -->
+    <div class="panel" id="p1">
+      <h2><b>2</b> <span id="photoTitle">Загрузите фото</span></h2>
+      <div id="photoSingle">
+        <label class="drop" id="drop" for="file">
+          <div class="ico">📷</div>
+          <div><b>Нажмите или перетащите фото сюда</b></div>
+          <div class="muted" style="font-size:.9rem">JPG, PNG или WebP. Лица должны быть хорошо видны.</div>
+        </label>
+        <input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden>
+        <div class="preview" id="preview">
+          <img id="previewImg" alt="Ваше фото">
+          <div class="preview-info">
+            <b id="fileName"></b>
+            <div class="preview-actions">
+              <button class="btn ghost sm" id="removePhoto" type="button">✕ Убрать фото</button>
+              <button class="btn ghost sm" id="changePhoto" type="button">Выбрать другое</button>
+            </div>
+            <p class="muted preview-hint">Загрузили не то? Просто перетащите другое фото прямо на эту область, и оно заменит текущее.</p>
+          </div>
+        </div>
+
+        <div class="angles-tip" id="anglesTip">
+          <h3>Желательно: фото с четырёх сторон</h3>
+          <p class="angles-big">Спереди, слева, справа и сзади. Так скульптура получится гораздо точнее и будет больше похожа на вас.</p>
+          <p class="muted">Это не обязательно: достаточно одного фото спереди (основное фото выше). Но чем больше ракурсов, тем лучше мы передадим причёску, профиль и затылок. Добавьте фото того же человека:</p>
+          <div class="angle-slots" id="angleSlots"></div>
+        </div>
+      </div>
+      <div id="photoGrowth" hidden>
+        <p class="muted" style="margin-top:-6px">Загрузите три фотографии ребёнка в разном возрасте и подпишите их — по каждой мы создадим отдельную фигурку.</p>
+        <div class="growth-slots" id="growthSlots"></div>
+      </div>
+      <p class="muted" style="font-size:.85rem;margin:14px 0 0">Загружая фото, вы подтверждаете, что имеете право его использовать, а изображённые люди (или родители детей) согласны на его использование для изготовления скульптуры. Подробнее — в <a href="/privacy" target="_blank">Политике конфиденциальности</a>.</p>
+      <div class="err" id="err1"></div>
+    </div>
+
+    <!-- 3. состав и стиль -->
+    <div class="panel locked" id="p2">
+      <h2><b>3</b> <span id="styleTitle">Состав и характер исполнения</span></h2>
+      <div id="compoBlock">
+        <h3 class="sub" style="margin-top:6px">Сколько человек на скульптуре?</h3>
+        <div class="people-pick" id="peoplePick"></div>
+      </div>
+      <h3 class="sub">Характер исполнения</h3>
+      <div class="styles" id="styles"></div>
+      <div class="chips">
+        <span class="muted">Размер:</span>
+        <span class="chip" id="sizeChip">10–15 см</span>
+        <span class="chip soon">другие размеры — скоро</span>
+      </div>
+      <div class="price-live"><span id="liveLabel">Стоимость скульптуры <small class="muted">(доставка отдельно)</small></span><b id="livePrice">—</b></div>
+      <div style="height:20px"></div>
+      <button class="btn big full-m" id="gen" type="button">Показать макет</button>
+      <div class="err" id="err2"></div>
+      <div class="loader" id="loader"><div class="spin"></div><span id="loaderText">Создаём макет вашей статуэтки…</span><div class="progress"><i id="progressBar"></i></div><small>Обычно это занимает 3–5 минут. Не закрывайте страницу: макет появится здесь сам.</small></div>
+    </div>
+
+    <!-- 4. результат -->
+    <div class="panel" id="p3" style="display:none">
+      <h2><b>4</b> Ваш макет</h2>
+      <div class="notice" id="demoNotice" style="display:none">Демо-режим: создание макета не подключено, поэтому показано исходное фото (см. README, файл .env).</div>
+      <div id="results"></div>
+      <div class="actions">
+        <button class="btn" id="toOrder" type="button">Нравится — оформить заказ</button>
+        <button class="btn ghost" id="regen" type="button">Создать заново</button>
+      </div>
+    </div>
+
+    <!-- 5. заказ -->
+    <div class="panel" id="p4" style="display:none">
+      <h2><b>5</b> Доставка и оплата</h2>
+      <form id="orderForm" class="form" novalidate>
+        <div><label for="name">Имя и фамилия</label><input type="text" id="name" name="name" autocomplete="name" required></div>
+        <div><label for="phone">Телефон</label><input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+7" required></div>
+        <div class="full"><label for="email">Email (на него придёт чек)</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+        <div class="full addr-wrap">
+          <label for="address">Адрес доставки (город, улица, дом)</label>
+          <input type="text" id="address" autocomplete="off" placeholder="Начните вводить адрес и выберите из списка" required>
+          <ul class="suggest" id="suggest" hidden></ul>
+          <div class="hint" id="addrHint"></div>
+        </div>
+        <div class="demo-addr full" id="demoAddr" hidden>
+          <div class="notice" style="margin:0 0 10px">Демо-режим: проверка адреса не подключена (нужен DADATA_TOKEN). Введите город и индекс вручную.</div>
+          <div class="form">
+            <div><label for="demoCity">Город</label><input type="text" id="demoCity"></div>
+            <div><label for="demoPost">Индекс</label><input type="text" id="demoPost" inputmode="numeric" maxlength="6"></div>
+          </div>
+        </div>
+        <div><label for="flat">Квартира / офис (если есть)</label><input type="text" id="flat" name="flat"></div>
+        <div class="full" id="deliveryBox" hidden>
+          <label>Способ доставки</label>
+          <div id="deliveryOpts"></div>
+          <div class="hint">Доставка не входит в стоимость и оплачивается отдельно.</div>
+        </div>
+        <div class="full"><label for="comment">Комментарий к заказу (необязательно)</label><textarea id="comment" name="comment" rows="2"></textarea></div>
+        <div class="consents full">
+          <label class="consent"><input type="checkbox" id="consentOffer"> <span>Я принимаю условия <a href="/offer" target="_blank">публичной оферты</a>. Скульптура изготавливается индивидуально: изготовление начинается сразу после оплаты, отменить заказ и вернуть товар надлежащего качества нельзя (кроме брака и несоответствия макету).</span></label>
+          <label class="consent"><input type="checkbox" id="consentPd"> <span>Я даю согласие на обработку моих персональных данных и загруженных фотографий в соответствии с <a href="/privacy" target="_blank">Политикой конфиденциальности</a>.</span></label>
+        </div>
+      </form>
+      <div class="summary">
+        <div class="total" id="total">—<small id="totalNote"></small></div>
+        <button class="btn big full-m" id="pay" type="button">Перейти к оплате</button>
+      </div>
+      <div class="err" id="err4"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer"><div class="wrap"><div>ИП Шадура К. И., ИНН 772831712981</div><div><a href="/offer">Оферта</a> · <a href="/privacy">Политика конфиденциальности</a> · <a href="/legal">Реквизиты</a></div></div></footer>
+
+<script src="/static/js/nav.js"></script>
+<script src="/static/js/create.js"></script>
+</body>
+</html>

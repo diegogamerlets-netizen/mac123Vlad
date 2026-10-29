@@ -1,0 +1,23 @@
+[Unit]
+Description=Облик: сайт заказа скульптур
+After=network.target
+
+[Service]
+User=oblik
+Group=oblik
+WorkingDirectory=/opt/oblik/app
+ExecStart=/usr/bin/python3 /opt/oblik/app/server.py
+Restart=always
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONIOENCODING=utf-8
+
+# Ограничения: приложение пишет только в папку с данными
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/oblik/app/data
+
+[Install]
+WantedBy=multi-user.target
